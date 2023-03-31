@@ -121,6 +121,7 @@ def station_stats(df):
     print(common_combination)
     print(Fore.GREEN + "\nThis took %s seconds." % round((time.time() - start_time),3))
     print(Fore.WHITE + '~'*40)
+    
 def trip_duration_stats(df):
     """Displays statistics on the total and average trip duration."""
     print(Fore.RED + '\nCalculating Trip Duration\n')
@@ -173,6 +174,14 @@ def view_chosen_data(df):
         print( df.iloc[view_steps:view_steps+5])
         view_steps += 5
         viewer_choice = input(Fore.RED + 'Would you like to continue?: ').lower()
+        
+def restart_data(df):
+    restart = input(Fore.RED + '\nWould you like to restart? Enter yes or no.\n') 
+    options = ['yes','YES','Yes','yES','y','Y'] 
+    while (restart in options):
+        print("Thanks,will start again")
+        main()
+        break
     
 def main():
     while True:
@@ -183,8 +192,8 @@ def main():
         trip_duration_stats(df)
         user_stats(df)
         view_chosen_data(df)
-        restart = input(Fore.RED + '\nWould you like to restart? Enter yes or no.\n')
-        if restart.lower() != 'yes':
-            break
+        restart_data(df)
+        break
+        
 if __name__ == "__main__":
 	main()
