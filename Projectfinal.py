@@ -167,7 +167,7 @@ def user_stats(df):
     
 def view_chosen_data(df):
     viewer_choice = input(Fore.RED + '\nWould you like to view 5 individual rows of trip data? Enter Yes or No: \n').lower()
-    choices = ['yes']
+    choices = ['yes','YES','Yes','yES','Y','y']
     view_steps = 0
     while (viewer_choice in choices):
         print( df.iloc[view_steps:view_steps+5])
