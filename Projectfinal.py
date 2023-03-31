@@ -22,14 +22,14 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
    
-    print(Fore.RED + 'Welcome to the US bikeshare database!')
+    print(Fore.YELLOW + 'Welcome to the US bikeshare database!')
 	
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     cities = ['chicago', 'new york city','washington']
     try:
         city = input (Fore.RED + 'What city would you like to explore? Chicago, New York City or Washington? ').lower()
         while (city not in cities):
-            print(Fore.BLUE + 'You entered ',city,'. Please try again as this city if not among the provided options.')
+            print(Fore.BLUE + 'You entered ',city,'. Oops,Please try again. we only have data for above 3 cities.')
             city = input(Fore.RED + 'Please choose a valid city: Chicago, New York City or Washington? ').lower()
         print(Fore.BLUE + 'You selected ',city,'. Thank you for your input.')
     except KeyError:
