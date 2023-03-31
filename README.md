@@ -7,10 +7,11 @@
 Bikeshare Data - USA
 
 ### Description
-Describe what your project is about and what it does
+This project provides an interactive information about the bikeshare rentals in New York , Chicago and Washington Cities !!!
+The software used to develop this is Python 
 
 ### Files used
-Include the files used
+Data files used to retrieve the information are 1.chicago.csv 2. washington.csv 3.new_york_city.csv
 
 ### Credits
 It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
