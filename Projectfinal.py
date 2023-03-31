@@ -31,7 +31,7 @@ def get_filters():
         while (city not in cities):
             print(Fore.BLUE + 'You entered ',city,'. Oops,Please try again. we only have data for above 3 cities.')
             city = input(Fore.RED + 'Please choose a valid city: Chicago, New York City or Washington? ').lower()
-        print(Fore.BLUE + 'You selected ',city,'. Thank you for your input.')
+        print(Fore.GREEN + 'You selected ',city,'. Thank you for your input.')
     except KeyError:
             print('Error Encountered')
 	
@@ -40,9 +40,9 @@ def get_filters():
     try:
         month = input(Fore.RED + 'What month would you like to look at? All, January, February, March, April, May or June? ').lower()
         while (month not in months):
-            print(Fore.BLUE + 'You entered ',month,'. Please try again as the month is not among the provided options.')
+            print(Fore.GREEN + 'You entered ',month,'. Please try again as the month is not among the provided options.')
             month = input(Fore.RED + 'Choose either a month from January to June, or choose All? ').lower()
-        print(Fore.BLUE + 'You selected ',month,'. Thank you for your input.')
+        print(Fore.GREEN + 'You selected ',month,'. Thank you for your input.')
     except KeyError:
             print ('Error Encountered')
 	
@@ -51,9 +51,9 @@ def get_filters():
     try:
         day = input (Fore.RED + 'What day of the week would you like to explore? All, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday? ').lower()
         while (day not in days):
-            print(Fore.BLUE + 'You entered',day,'. Please try again as the month is not among the provided options.')
+            print(Fore.GREEN + 'You entered',day,'. Please try again as the month is not among the provided options.')
             day = input(Fore.RED + 'Please choose a valid city: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday or All? ').lower()
-        print(Fore.BLUE + 'You selected ',day,'. Thank you for your input.')
+        print(Fore.GREEN + 'You selected ',day,'. Thank you for your input.')
     except KeyError:
         print('Error Encountered')
     print(Fore.WHITE + '~'*40)
@@ -90,18 +90,18 @@ def time_stats(df):
     df['Start Time'] = pd.to_datetime(df['Start Time'])
     df['month'] = df['Start Time'].dt.month
     common_month = df['month'].mode()[0]
-    print(Fore.BLUE + 'The most common month of travel: ', common_month)
+    print(Fore.GREEN + 'The most common month of travel: ', common_month)
     
  
     # TO DO: display the most common day of week
     df['day_of_week'] = df['Start Time'].dt.day_name()
     common_day_of_week = df['day_of_week'].mode()[0]
-    print(Fore.BLUE + 'The most common day of week of travel: ',common_day_of_week)
+    print(Fore.GREEN + 'The most common day of week of travel: ',common_day_of_week)
     
     # TO DO: display the most common start hour
     df['hour'] = df['Start Time'].dt.hour
     common_hour = df['hour'].mode()[0]
-    print(Fore.BLUE + 'The most common hour of travel: ',common_hour)
+    print(Fore.GREEN + 'The most common hour of travel: ',common_hour)
     print(Fore.BLUE + "\nThis took %s seconds." %round((time.time() - start_time),3))
     print(Fore.WHITE + '~'*40)
 def station_stats(df):
@@ -109,7 +109,7 @@ def station_stats(df):
     print(Fore.RED + '\nCalculating The Most Popular Stations and Trip\n')
     start_time = time.time()
     common_start = df['Start Station'].mode()[0]
-    print(Fore.BLUE + common_start)
+    print(Fore.GREEN + common_start)
 	
     # TO DO: display most commonly used end station
     common_end = df['End Station'].mode()[0]
@@ -119,15 +119,16 @@ def station_stats(df):
     df['combination'] = df['Start Station'] + df['End Station']
     common_combination = df ['combination'].mode()[0]
     print(common_combination)
-    print(Fore.BLUE + "\nThis took %s seconds." % round((time.time() - start_time),3))
+    print(Fore.GREEN + "\nThis took %s seconds." % round((time.time() - start_time),3))
     print(Fore.WHITE + '~'*40)
+    
 def trip_duration_stats(df):
     """Displays statistics on the total and average trip duration."""
     print(Fore.RED + '\nCalculating Trip Duration\n')
     start_time = time.time()
     # TO DO: display total travel time
     total_travel_time = df['Trip Duration'].sum()
-    print(Fore.BLUE + '\nTotal travel time: %s.'%str(datetime.timedelta(seconds = int(total_travel_time))))
+    print(Fore.GREEN + '\nTotal travel time: %s.'%str(datetime.timedelta(seconds = int(total_travel_time))))
 	
     # TO DO: display mean travel time 
     average_travel_time = df['Trip Duration'].mean()
@@ -145,34 +146,42 @@ def user_stats(df):
     # TO DO: Display counts of gender
     try:
         count_gender = df['Gender'].value_counts()
-        print(Fore.BLUE + 'Count of gender: ', count_gender)
+        print(Fore.GREEN + 'Count of gender: ', count_gender)
     except KeyError:
-        print(Fore.BLUE + 'No data is available for the selected city')    
+        print(Fore.GREEN + 'No data is available for the selected city')    
     
     # TO DO: Display earliest, most recent, and most common year of birth
     try:
         earliest_birth_year = df['Birth Year'].min()
         earliest_year = int(earliest_birth_year)
-        print(Fore.BLUE + 'The earliest birth by year: ', earliest_year)
+        print(Fore.GREEN + 'The earliest birth by year: ', earliest_year)
         most_recent_year = df['Birth Year'].max()
         recent_year = int(most_recent_year)
-        print(Fore.BLUE + 'The most recent birth by year: ', recent_year)
+        print(Fore.GREEN + 'The most recent birth by year: ', recent_year)
         most_common_birth = df['Birth Year'].mode()[0]
         common_birth = int(most_common_birth)
         print(Fore.BLUE + 'The most common birth by year: ', common_birth)
     except KeyError:
-        print(Fore.BLUE + 'Not available data')
-    print(Fore.BLUE + "\nThis took %s seconds." % round((time.time() - start_time),3))
+        print(Fore.GREEN+ 'Not available data')
+    print(Fore.GREEN + "\nThis took %s seconds." % round((time.time() - start_time),3))
     print('-'*40)
     
 def view_chosen_data(df):
     viewer_choice = input(Fore.RED + '\nWould you like to view 5 individual rows of trip data? Enter Yes or No: \n').lower()
-    choices = ['yes']
+    choices = ['yes','YES','Yes','yES','Y','y']
     view_steps = 0
     while (viewer_choice in choices):
         print( df.iloc[view_steps:view_steps+5])
         view_steps += 5
         viewer_choice = input(Fore.RED + 'Would you like to continue?: ').lower()
+        
+def restart_data(df):
+    restart = input(Fore.RED + '\nWould you like to restart? Enter yes or no.\n') 
+    options = ['yes','YES','Yes','yES','y','Y'] 
+    while (restart in options):
+        print("Thanks,will start again")
+        main()
+        break
     
 def main():
     while True:
@@ -183,8 +192,8 @@ def main():
         trip_duration_stats(df)
         user_stats(df)
         view_chosen_data(df)
-        restart = input(Fore.RED + '\nWould you like to restart? Enter yes or no.\n')
-        if restart.lower() != 'yes':
-            break
+        restart_data(df)
+        break
+        
 if __name__ == "__main__":
 	main()
