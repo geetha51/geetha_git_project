@@ -14,5 +14,6 @@ The software used to develop this is Python
 Data files used to retrieve the information are 1.chicago.csv 2. washington.csv 3.new_york_city.csv
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
+https://github.com/skills/communicate-using-markdown
+https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes
 
